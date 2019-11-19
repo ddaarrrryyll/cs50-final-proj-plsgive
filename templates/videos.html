@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    video
+{% endblock %}
+
+{% block main %}
+    <body>
+        {% for video in videos %}
+            <body>
+                <iframe width="640" height="360" src="{{ video.videos }}"></iframe>
+                <p style="margin-top: 10px;">link: <a href="{{ video.videos }}">{{ video.videos }}</a></p>
+                <form action="/reportvideo" method="post">
+                    <div>
+                        <input hidden value="{{ video.id }}" name="reportvideo" type="number" style="width: 60px">
+                    </div>
+                    <button class="btn btn-danger" type="submit">Report</button>
+                </form>
+            </body>
+        {% endfor %}
+    </body>
+<div class="input">
+    <form action="/submitvideo" method="post">
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="video" placeholder="Submit your own links" type="text" size="100">
+            </div>
+        <button class="btn btn-primary" type="submit">Submit Video</button>
+    </form>
+</div>
+{% endblock %}

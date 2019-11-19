@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    quote
+{% endblock %}
+
+{% block main %}
+    <body>
+        {% for quote in quotes %}
+            <body>
+                <p class="quote">"{{ quote.quotes }}"</p>
+                <p style="font-size: large">- {{ quote.person }}</p>
+                    <form action="/reportquote" method="post">
+                        <div>
+                            <input hidden value="{{ quote.id }}" name="reportquote" type="number" style="width: 60px">
+                        </div>
+                        <button class="btn btn-danger" type="submit">Report</button>
+                    </form>
+            </body>
+        {% endfor %}
+    </body>
+<div class="input">
+    <form action="/submitquote" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="quote" placeholder="Submit your own quote" type="text" size="100">
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="person" placeholder="Person (blank if unknown)" type="text" size="35">
+        </div>
+    <button class="btn btn-primary" type="submit">Submit Quote</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,153 @@
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: xx-large;
+}
+
+/* colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+}
+
+main img
+{
+    /* constrain images on small screens */
+    max-width: 100%;
+}
+
+.quote{
+    margin-top: 100px;
+    font-size: x-large;
+}
+
+.quoteid{
+    font-size: small;
+    margin-top: 50px;
+}
+
+.input{
+    margin-top: 200px !important;
+}
+
+.image{
+    width: 500px;
+    max-height: 500px;
+    margin-top: 50px;
+    margin-bottom: 10px !important;
+}
+
+.imageid{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    margin-left: 1631px;
+    margin-bottom: 215px;
+}
+
+.sideimage{
+    max-width: 50px;
+    max-height: 50px;
+    margin-right: 10px !important;
+    margin-left: 30px;
+
+}
+
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  max-height: 500px;
+  width: 300px;
+  margin-right: 70px !important;
+}
+
+.sidebarheader {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 50px;
+    margin-top: 140px;
+    margin-right:100px;
+    text-decoration: underline;
+
+}
+
+.sidebarheaderid {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 50px;
+    margin-top: 140px;
+    margin-right:245px;
+    text-decoration: underline;
+
+}
+
+.sideid {
+    text-align: left;
+}
+
+.button {
+    right: 0;
+    max-height: 40px;
+    max-width: 80px;
+    font-size: 11px;
+    text-align: center;
+
+}
+
+.report {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin-right: 20px;
+    margin-bottom: 240px;
+
+}
+
+.reportid {
+    position: fixed;
+    right: 0;
+    margin-right: 170px;
+    margin-top: 5px;
+    width: 100px;
+
+}

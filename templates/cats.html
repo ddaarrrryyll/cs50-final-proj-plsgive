@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    meow
+{% endblock %}
+
+{% block main %}
+    <body>
+        {% for cat in cats %}
+        <body>
+            <img class="image" src="{{ cat.cats }}">
+            <p>Link: <a href="{{ cat.cats }}">{{ cat.cats }}</a></p>
+            <button type="button" class="btn btn-info" value="Refresh Page" onClick="window.location.reload();" style="margin-bottom: 60px;">more!</button>
+            <p class="imageid">This image's ID: {{ cat.id }}</p>
+        </body>
+        {% endfor %}
+    </body>
+    <div>
+        <h5 class="sidebarheaderid">ID</h5>
+        <h5 class="sidebarheader">Submissions</h5>
+        <aside class="sidebar" style="margin-top: 185px;">
+            <nav>
+                {% for newcat in newcats %}
+                    <ul>
+                       <strong>{{ newcat.id }}</strong>
+                       <img class="sideimage" src="{{ newcat.cats }}">
+                    </ul>
+                {% endfor %}
+            </nav>
+            <form class="report" action="/reportcat" method="post">
+                <div>
+                    <input autocomplete="off" class="reportid" name="reportcat" placeholder="Image ID" type="number">
+                </div>
+                <button class="btn btn-primary" type="submit">Remove</button>
+            </form>
+        </aside>
+    </div>
+
+    <form action="/catlink" method="post">
+        <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="catlink" placeholder="Submit your own Imgur Links" type="text" size="100">
+        </div>
+        <button class="btn btn-primary" type="submit">Submit Link</button>
+    </form>
+{% endblock %}

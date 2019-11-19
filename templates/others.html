@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    other animals
+{% endblock %}
+
+{% block main %}
+    <body>
+        {% for other in others %}
+        <body>
+            <img class="image" src="{{ other.others }}">
+            <p>Link: <a href="{{ other.others }}">{{ other.others }}</a></p>
+            <button type="button" class="btn btn-info" value="Refresh Page" onClick="window.location.reload();" style="margin-bottom: 60px;">more!</button>
+            <p class="imageid">This image's ID: {{ other.id }}</p>
+        </body>
+        {% endfor %}
+    </body>
+    <div>
+        <h5 class="sidebarheaderid">ID</h5>
+        <h5 class="sidebarheader">Submissions</h5>
+        <aside class="sidebar" style="margin-top: 185px;">
+            <nav>
+                {% for newother in newothers %}
+                    <ul>
+                       <strong>{{ newother.id }}</strong>
+                       <img class="sideimage" src="{{ newother.others }}">
+                    </ul>
+                {% endfor %}
+            </nav>
+            <form class="report" action="/reportother" method="post">
+                <div>
+                    <input autocomplete="off" class="reportid" name="reportother" placeholder="Image ID" type="number">
+                </div>
+                <button class="btn btn-primary" type="submit">Remove</button>
+            </form>
+        </aside>
+    </div>
+
+    <form action="/otherlink" method="post">
+        <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="otherlink" placeholder="Submit your own Imgur Links" type="text" size="100">
+        </div>
+        <button class="btn btn-primary" type="submit">Submit Link</button>
+    </form>
+{% endblock %}
