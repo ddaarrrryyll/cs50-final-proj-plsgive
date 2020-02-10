@@ -28,26 +28,52 @@ def after_request(response):
     return response
 
 # Configure Library to use SQLite database
-db = SQL("postgres://jvlzgbpyozapbj:b038910e9b9e5ee8c7d9ce38557548b5a0f4644aafc077b1851fcdba2950b6c7@ec2-54-197-238-238.compute-1.amazonaws.com:5432/dctg04ki9uircd")
+db = SQL("sqlite:///wholesome.db")
 
 @app.route("/", methods=["GET"])
 def get_index():
+
     return redirect("/home")
 
 
 # HOMEPAGE
 @app.route("/home", methods=["GET"])
 def get_home():
-    return render_template("home.html")
+
+    # GET number of quotes from database
+    quotes = db.execute("SELECT quotes FROM quotes")
+    quoteno = len(quotes)
+
+    # GET number of videos from database
+    videos = db.execute("SELECT videos FROM videos")
+    videono = len(videos)
+
+    # GET number of cats from database
+    cats = db.execute("SELECT cats FROM cats")
+    catno = len(cats)
+
+    # GET number of dogs from database
+    dogs = db.execute("SELECT dogs FROM dogs")
+    dogno = len(dogs)
+
+    # GET number of others from database
+    others = db.execute("SELECT others FROM others")
+    otherno = len(others)
+
+
+    return render_template("home.html", quoteno=quoteno, videono=videono, catno=catno, dogno=dogno, otherno=otherno)
 
 
 # QUOTES
 @app.route("/quotes", methods=["GET"])
 def get_quotes():
 
+    # GET number of quotes from database
+    allquotes = db.execute("SELECT quotes FROM quotes")
+    quoteno = len(allquotes)
     quotes = db.execute("SELECT * FROM quotes ORDER BY RANDOM() LIMIT 1")
 
-    return render_template("quotes.html", quotes=quotes)
+    return render_template("quotes.html", quotes=quotes, quoteno=quoteno)
 
 @app.route("/submitquote", methods=["POST"])
 def submitquote():
@@ -70,9 +96,12 @@ def submitquote():
 @app.route("/videos", methods=["GET"])
 def get_videos():
 
+    # GET number of videos from database
+    allvideos = db.execute("SELECT videos FROM videos")
+    videono = len(allvideos)
     videos = db.execute("SELECT * FROM videos ORDER BY RANDOM() LIMIT 1")
 
-    return render_template("videos.html", videos=videos)
+    return render_template("videos.html", videos=videos, videono=videono)
 
 @app.route("/submitvideo", methods=["POST"])
 def submitvideo():
@@ -95,11 +124,14 @@ def submitvideo():
 @app.route("/cats", methods=["GET", "POST"])
 def get_cats():
 
+    # GET number of cats from database
+    allcats = db.execute("SELECT cats FROM cats")
+    catno = len(allcats)
+
     cats = db.execute("SELECT * FROM cats ORDER BY RANDOM() LIMIT 1")
 
-    newcats = db.execute("SELECT * FROM cats ORDER BY id DESC")
 
-    return render_template("cats.html", cats=cats, newcats=newcats)
+    return render_template("cats.html", cats=cats, catno=catno)
 
 @app.route("/catlink", methods=["POST"])
 def catlink():
@@ -135,11 +167,14 @@ def catlink():
 @app.route("/dogs", methods=["GET", "POST"])
 def get_dogs():
 
+    # GET number of dogs from database
+    alldogs = db.execute("SELECT dogs FROM dogs")
+    dogno = len(alldogs)
+
     dogs = db.execute("SELECT * FROM dogs ORDER BY RANDOM() LIMIT 1")
 
-    newdogs = db.execute("SELECT * FROM dogs ORDER BY id DESC")
 
-    return render_template("dogs.html", dogs=dogs, newdogs=newdogs)
+    return render_template("dogs.html", dogs=dogs, dogno=dogno)
 
 @app.route("/doglink", methods=["POST"])
 def doglink():
@@ -177,11 +212,13 @@ def doglink():
 @app.route("/others", methods=["GET", "POST"])
 def get_others():
 
+    # GET number of others from database
+    allothers = db.execute("SELECT others FROM others")
+    otherno = len(allothers)
+
     others = db.execute("SELECT * FROM others ORDER BY RANDOM() LIMIT 1")
 
-    newothers = db.execute("SELECT * FROM others ORDER BY id DESC")
-
-    return render_template("others.html", others=others, newothers=newothers)
+    return render_template("others.html", others=others, otherno=otherno)
 
 @app.route("/otherlink", methods=["POST"])
 def otherlink():
