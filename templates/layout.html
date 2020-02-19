@@ -15,19 +15,22 @@
         <link href="/static/favicon.ico" rel="icon">
 
         <link href="/static/styles.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
-        <title>PlsGiveMe: {% block title %}{% endblock %}</title>
+        <title>PlsGive: {% block title %}{% endblock %}</title>
 
     </head>
 
     <body>
 
         <nav class="navbar navbar-expand-md navbar-light bg-light border">
-            <a class="navbar-brand" href="/"><span class="blue">PlsGiveMe:</span></a>
+            <a class="navbar-brand" href="/"><span class="blue">PlsGive:</span></a>
             <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -44,7 +47,7 @@
 
         {% if get_flashed_messages() %}
             <header>
-                <div class="alert alert-primary border text-center" role="alert" style="font-weight: bold">
+                <div class="alert alert-primary alert-dismissible border text-center fade-out" role="alert" style="font-weight: bold">
                     {{ get_flashed_messages() | join(" ") }}
                 </div>
             </header>
@@ -53,6 +56,11 @@
         <main class="container p-5">
             {% block main %}{% endblock %}
         </main>
+
+        <footer class="small text-center text-muted">
+            CS50 final project 'PlsGive'. Designed and created by Darryl Ng, November 2019, Singapore.
+        </footer>
+
     </body>
 
 </html>
