@@ -5,41 +5,135 @@
 {% endblock %}
 
 {% block main %}
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <body>
         {% for dog in dogs %}
         <body>
             <img class="image" src="{{ dog.dogs }}">
             <p>Link: <a href="{{ dog.dogs }}">{{ dog.dogs }}</a></p>
-            <button type="button" class="btn btn-info" value="Refresh Page" onClick="window.location.reload();" style="margin-bottom: 60px;">more!</button>
-            <p class="imageid">This image's ID: {{ dog.id }}</p>
+            <button type="button" class="btn btn-info" value="Refresh Page" onClick="window.location.reload();" style="margin-bottom: 10px;">more dogs!</button>
+            <form action="/reportdog" method="post">
+                <div>
+                    <input hidden value="{{ dog.id }}" name="reportdog" type="number" style="width: 60px; margin-bottom: 60px;">
+                </div>
+                <button class="btn btn-danger" type="submit" style="margin-bottom: 60px;">Report</button>
+            </form>
         </body>
         {% endfor %}
     </body>
-    <div>
-        <h5 class="sidebarheaderid">ID</h5>
-        <h5 class="sidebarheader">Submissions</h5>
-        <aside class="sidebar" style="margin-top: 185px;">
-            <nav>
-                {% for newdog in newdogs %}
-                    <ul>
-                       <strong>{{ newdog.id }}</strong>
-                       <img class="sideimage" src="{{ newdog.dogs }}">
-                    </ul>
-                {% endfor %}
-            </nav>
-            <form class="report" action="/reportdog" method="post">
-                <div>
-                    <input autocomplete="off" class="reportid" name="reportdog" placeholder="Image ID" type="number">
-                </div>
-                <button class="btn btn-primary" type="submit">Remove</button>
-            </form>
-        </aside>
-    </div>
 
     <form action="/doglink" method="post">
         <div class="form-group">
                 <input autocomplete="off" autofocus class="form-control" name="doglink" placeholder="Submit your own Imgur Links" type="text" size="100">
         </div>
-        <button class="btn btn-primary" type="submit">Submit Link</button>
+        <button class="btn btn-info" type="submit">Submit Link</button>
     </form>
+
+    <div class="counterbox">
+        <i class="fa fa-circle-o fa-2x"></i>
+        <h2 class="timer count-title count-number" data-to="{{ dogno }}" data-speed="1500"></h2>
+        <p class="count-text ">Dogs Submitted</p>
+    </div>
+
+<script>
+(function ($) {
+	$.fn.countTo = function (options) {
+		options = options || {};
+
+		return $(this).each(function () {
+			// set options for current element
+			var settings = $.extend({}, $.fn.countTo.defaults, {
+				from:            $(this).data('from'),
+				to:              $(this).data('to'),
+				speed:           $(this).data('speed'),
+				refreshInterval: $(this).data('refresh-interval'),
+				decimals:        $(this).data('decimals')
+			}, options);
+
+			// how many times to update the value, and how much to increment the value on each update
+			var loops = Math.ceil(settings.speed / settings.refreshInterval),
+				increment = (settings.to - settings.from) / loops;
+
+			// references & variables that will change with each update
+			var self = this,
+				$self = $(this),
+				loopCount = 0,
+				value = settings.from,
+				data = $self.data('countTo') || {};
+
+			$self.data('countTo', data);
+
+			// if an existing interval can be found, clear it first
+			if (data.interval) {
+				clearInterval(data.interval);
+			}
+			data.interval = setInterval(updateTimer, settings.refreshInterval);
+
+			// initialize the element with the starting value
+			render(value);
+
+			function updateTimer() {
+				value += increment;
+				loopCount++;
+
+				render(value);
+
+				if (typeof(settings.onUpdate) == 'function') {
+					settings.onUpdate.call(self, value);
+				}
+
+				if (loopCount >= loops) {
+					// remove the interval
+					$self.removeData('countTo');
+					clearInterval(data.interval);
+					value = settings.to;
+
+					if (typeof(settings.onComplete) == 'function') {
+						settings.onComplete.call(self, value);
+					}
+				}
+			}
+
+			function render(value) {
+				var formattedValue = settings.formatter.call(self, value, settings);
+				$self.html(formattedValue);
+			}
+		});
+	};
+
+	$.fn.countTo.defaults = {
+		from: 0,               // the number the element should start at
+		to: 0,                 // the number the element should end at
+		speed: 1000,           // how long it should take to count between the target numbers
+		refreshInterval: 20,  // how often the element should be updated
+		decimals: 0,           // the number of decimal places to show
+		formatter: formatter,  // handler for formatting the value before rendering
+		onUpdate: null,        // callback method for every time the element is updated
+		onComplete: null       // callback method for when the element finishes updating
+	};
+
+	function formatter(value, settings) {
+		return value.toFixed(settings.decimals);
+	}
+}(jQuery));
+
+jQuery(function ($) {
+  // custom formatting example
+  $('.count-number').data('countToOptions', {
+	formatter: function (value, options) {
+	  return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
+	}
+  });
+
+  // start all the timers
+  $('.timer').each(count);
+
+  function count(options) {
+	var $this = $(this);
+	options = $.extend({}, options || {}, $this.data('countToOptions') || {});
+	$this.countTo(options);
+  }
+});
+</script>
+
 {% endblock %}
