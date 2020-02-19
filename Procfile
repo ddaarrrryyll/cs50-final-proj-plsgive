@@ -1,1 +1,1 @@
-web: gunicorn plsgive:app
+web: gunicorn application:app
