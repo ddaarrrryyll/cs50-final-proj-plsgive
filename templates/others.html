@@ -1,43 +1,39 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    quote
+    other animals
 {% endblock %}
 
 {% block main %}
 <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <body>
-        {% for quote in quotes %}
-            <body>
-                <p class="quote">"{{ quote.quotes }}"</p>
-                <p style="font-size: large">- {{ quote.person }}</p>
-                    <form action="/reportquote" method="post">
-                        <div>
-                            <input hidden value="{{ quote.id }}" name="reportquote" type="number" style="width: 60px">
-                        </div>
-                        <button class="btn btn-danger" type="submit">Report</button>
-                    </form>
-            </body>
+        {% for other in others %}
+        <body>
+            <img class="image" src="{{ other.others }}">
+            <p>Link: <a href="{{ other.others }}">{{ other.others }}</a></p>
+            <button type="button" class="btn btn-info" value="Refresh Page" onClick="window.location.reload();" style="margin-bottom: 10px;">more animals!</button>
+            <form action="/reportother" method="post">
+                <div>
+                    <input hidden value="{{ other.id }}" name="reportother" type="number" style="width: 60px; margin-bottom: 60px;">
+                </div>
+                <button class="btn btn-danger" type="submit" style="margin-bottom: 60px;">Report</button>
+            </form>
+        </body>
         {% endfor %}
     </body>
-<div class="input">
-    <form action="/submitquote" method="post">
+
+    <form action="/otherlink" method="post">
         <div class="form-group">
-            <input autocomplete="off" autofocus class="form-control" name="quote" placeholder="Submit your own quote" type="text" size="100">
+                <input autocomplete="off" autofocus class="form-control" name="otherlink" placeholder="Submit your own Imgur Links" type="text" size="100">
         </div>
-        <div class="form-group">
-            <input autocomplete="off" autofocus class="form-control" name="person" placeholder="Person (blank if unknown)" type="text" size="35">
-        </div>
-    <button class="btn btn-info" type="submit" style="margin-bottom: 100px;">Submit Quote</button>
+        <button class="btn btn-info" type="submit">Submit Link</button>
     </form>
-</div>
 
-
-<div class="counterbox">
-    <i class="fa fa-pencil fa-2x"></i>
-    <h2 class="timer count-title count-number" data-to="{{ quoteno }}" data-speed="1500"></h2>
-    <p class="count-text ">Quotes Submitted</p>
-</div>
+    <div class="counterbox">
+        <i class="fa fa-bug fa-2x"></i>
+        <h2 class="timer count-title count-number" data-to="{{ otherno }}" data-speed="1500"></h2>
+        <p class="count-text ">Others Animals Submitted</p>
+    </div>
 
 <script>
 (function ($) {
