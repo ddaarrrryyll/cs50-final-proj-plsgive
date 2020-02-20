@@ -7,7 +7,7 @@ nav .navbar-brand
 /* colors for brand */
 nav .navbar-brand .blue
 {
-    color: #537fbe;
+    color: #41bacc;
 }
 nav .navbar-brand .red
 {
@@ -46,6 +46,12 @@ main img
     max-width: 100%;
 }
 
+.homeabout {
+    width: 500px;
+    text-align: center;
+    margin-left: 260px;
+}
+
 .quote{
     margin-top: 100px;
     font-size: x-large;
@@ -57,7 +63,7 @@ main img
 }
 
 .input{
-    margin-top: 200px !important;
+    margin-top: 120px !important;
 }
 
 .image{
@@ -67,63 +73,6 @@ main img
     margin-bottom: 10px !important;
 }
 
-.imageid{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    margin-left: 1631px;
-    margin-bottom: 215px;
-}
-
-.sideimage{
-    max-width: 50px;
-    max-height: 50px;
-    margin-right: 10px !important;
-    margin-left: 30px;
-
-}
-
-
-.sidebar {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  display: block;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  max-height: 500px;
-  width: 300px;
-  margin-right: 70px !important;
-}
-
-.sidebarheader {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    margin-bottom: 50px;
-    margin-top: 140px;
-    margin-right:100px;
-    text-decoration: underline;
-
-}
-
-.sidebarheaderid {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    margin-bottom: 50px;
-    margin-top: 140px;
-    margin-right:245px;
-    text-decoration: underline;
-
-}
-
-.sideid {
-    text-align: left;
-}
 
 .button {
     right: 0;
@@ -138,7 +87,7 @@ main img
     position: fixed;
     right: 0;
     bottom: 0;
-    margin-right: 20px;
+    margin-right: 50px;
     margin-bottom: 240px;
 
 }
@@ -146,8 +95,97 @@ main img
 .reportid {
     position: fixed;
     right: 0;
-    margin-right: 170px;
+    margin-right: 180px;
     margin-top: 5px;
     width: 100px;
 
+}
+
+.fade-out {
+  animation: fadeOut ease 15s;
+  -webkit-animation: fadeOut ease 15s;
+  -moz-animation: fadeOut ease 15s;
+  -o-animation: fadeOut ease 15s;
+  -ms-animation: fadeOut ease 15s;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-moz-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-o-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+.counter {
+    background-color:#f5f5f5;
+    padding: 20px 0;
+    border-radius: 5px;
+}
+
+.count-title {
+    font-size: 40px;
+    font-weight: normal;
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.count-text {
+    font-size: 13px;
+    font-weight: normal;
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.fa-2x {
+    margin: 0 auto;
+    float: none;
+    display: table;
+    color: #4ad1e5;
+}
+
+.counterbox {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    display: block;
+    height: 180px;
+    width: 225px;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    color: #087B84;
+    padding: 20px 0
 }
