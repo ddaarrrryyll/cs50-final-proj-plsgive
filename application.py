@@ -28,7 +28,7 @@ def after_request(response):
     return response
 
 # Configure Library to use SQLite database
-db = SQL("sqlite:///wholesome.db")
+db = SQL("sqlite:///wholesomev2.db")
 
 @app.route("/", methods=["GET"])
 def get_index():
