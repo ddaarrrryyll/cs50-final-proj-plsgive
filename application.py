@@ -7,7 +7,7 @@ from tempfile import mkdtemp
 
 from helpers import apology
 
-# Configure application
+# Configure app
 app = Flask(__name__)
 
 # Auto-reload templates
