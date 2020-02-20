@@ -28,7 +28,7 @@ def after_request(response):
     return response
 
 # Configure Library to use SQLite database
-db = SQL("sqlite:///wholesome.db")
+db = SQL("https://data.heroku.com/datastores/9bf5c2db-f183-4b17-9fad-90cb2549876f")
 
 @app.route("/", methods=["GET"])
 def get_index():
