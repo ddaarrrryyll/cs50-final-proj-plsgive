@@ -156,7 +156,7 @@ def catlink():
             flash("Link has been submitted before!")
             return redirect("/cats")
     # UPDATE wholesome.db
-    db.execute("INSERT INTO cats (cats.cats) VALUES(:catlink)",
+    db.execute("INSERT INTO cats (cats) VALUES(:catlink)",
                 catlink=request.form.get("catlink"))
 
     flash("Submitted!")
