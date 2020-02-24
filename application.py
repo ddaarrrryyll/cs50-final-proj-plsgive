@@ -158,6 +158,7 @@ def catlink():
     # UPDATE wholesome.db
     db.execute("INSERT INTO cats (cats) VALUES(:catlink)",
                 catlink=request.form.get("catlink"))
+    db.commit()
 
     flash("Submitted!")
     return redirect("/cats")
