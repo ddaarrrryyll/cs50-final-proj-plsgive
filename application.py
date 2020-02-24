@@ -29,7 +29,7 @@ def after_request(response):
     return response
 
 # Configure Library to use SQLite database
-db = SQL("postgres://jvlzgbpyozapbj:b038910e9b9e5ee8c7d9ce38557548b5a0f4644aafc077b1851fcdba2950b6c7@ec2-54-197-238-238.compute-1.amazonaws.com:5432/dctg04ki9uircd")
+db = SQL("sqlite:///wholesome.db")
 
 @app.route("/", methods=["GET"])
 def get_index():
