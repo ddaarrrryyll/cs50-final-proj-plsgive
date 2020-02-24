@@ -35,6 +35,7 @@ conn = psycopg2.connect(user = "jvlzgbpyozapbj",
                         host = "ec2-54-197-238-238.compute-1.amazonaws.com",
                         port = "5432",
                         database = "dctg04ki9uircd")
+db = conn.cursor()
 
 @app.route("/", methods=["GET"])
 def get_index():
