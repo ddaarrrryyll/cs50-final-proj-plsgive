@@ -1,4 +1,4 @@
-Application Name: PlsGive
+# Application Name: PlsGive
 
 This is a simple web application I made for CS50's final project to counter the high stress levels in my society.
 Users are first greeted by the homepage which tells them the 'About' of this application together with the number of submitted content by other users.
