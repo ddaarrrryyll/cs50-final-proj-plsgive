@@ -1,7 +1,7 @@
 # CS50 Final Project: PlsGive
 https://plsgive.herokuapp.com/home
 
-**youtube embed doesn't work but should work when new links are provided 😔**
+**youtube embed doesn't work but should work when new links are provided 😔
 
 
 This is a simple web application I made for CS50's final project to counter the high stress levels in my society.
